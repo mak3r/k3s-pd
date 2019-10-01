@@ -1,9 +1,13 @@
-gpio mode 0 in
-gpio mode 0 up
+#!/bin/bash
+
+PIN=$2
+
+gpio mode $PIN in 
+gpio mode $PIN up
 
 while true; do
-  STATE=$(gpio read 0);
-  sleep 3; 
+  STATE=$(gpio read $PIN);
+  sleep 5; 
   if [ "$STATE" -eq "0" ]; then
     date;
     echo "The power is out. What should we do?";
