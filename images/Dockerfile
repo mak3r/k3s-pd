@@ -5,6 +5,6 @@ WORKDIR app
 
 ENTRYPOINT ["/bin/bash"]
 
-CMD ["action.sh", "full_path_to_file", "0"]
+CMD ["action.sh", "full_path_to_file", "0", "15"]
 
 

@@ -2,6 +2,8 @@
 
 POWER_OUT_FILE=$1
 PIN=$2
+SLEEP=$3
+
 echo "Detect low on wiringpi pin # $PIN"
 echo "When power is out, touch $POWER_OUT_FILE"
 
@@ -13,7 +15,11 @@ while true; do
   sleep 5; 
   if [ "$STATE" -eq "0" ]; then
     date;
-    touch "$POWER_OUT_FILE"
+    if test -f "$POWER_OUT_FILE-activated"; then
+      continue
+    else
+      touch "$POWER_OUT_FILE"
+    fi
   fi
 done;
 
